@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Driver : MonoBehaviour
+public class Car : MonoBehaviour
 {
     [SerializeField] float turnSpeed;
     [SerializeField] float moveSpeed;
-
-    void Start()
-    {
-        
-    }
+    [SerializeField] float maxHealth;
+    [SerializeField] float currentHealth;
 
     void Update()
     {
@@ -25,5 +22,10 @@ public class Driver : MonoBehaviour
 
         transform.Rotate(0f, 0f, -steer); //Negative steer so we rotate in the right direction
         transform.Translate(0f, acceleration, 0f);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
     }
 }

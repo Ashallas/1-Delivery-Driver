@@ -1,0 +1,21 @@
+My Personal Unity C# Style Guide : For my own reference
+
+//private primative type variables
+
+//serialized private primative type variables
+
+//private non-primative type variables
+
+//serialized private non-primative type variables
+
+//public primative type variables
+
+//public non-primative type variables
+
+//Unity message methods
+
+//custom private methods
+
+//custom public methods
+
+//additional classes (following similar structure)

@@ -4,15 +4,51 @@ using UnityEngine;
 
 public class CarCollisionHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    Car car;
+    DeliverySystem deliverySystem;
+
+    void Awake()
     {
+        car = GetComponent<Car>();    
+        deliverySystem = GetComponent<DeliverySystem>();   
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag != "Obstacle")
+        {
+            return;
+        }
+        //TakeDamage logic can probably just be static damage based on obstacle for our purposes
+        Debug.Log("car took some damage");
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.GetComponent<Pickup>() == null)
+        {
+            return;
+        }
         
+        Pickup pickup = collision.gameObject.GetComponent<Pickup>();
+        
+        switch(pickup.Type)
+        {
+            case "Package":
+                Package package = collision.GetComponent<Package>();
+
+                Debug.Log("Package Acquired!");
+                package.DisplayInstructions();
+                package.SelfDestruct();
+                deliverySystem.GainPackage();
+                break;
+            case "Boost":
+                //do something
+                break;
+            default:
+                break;
+        }
     }
 }
