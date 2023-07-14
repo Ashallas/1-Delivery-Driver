@@ -6,6 +6,7 @@ public class Car : MonoBehaviour
 {
     [SerializeField] float turnSpeed;
     [SerializeField] float moveSpeed;
+    [SerializeField] float boostDuration;
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
 
@@ -29,5 +30,13 @@ public class Car : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+    }
+
+    public IEnumerator Boost(float boostAmount)
+    {
+        Debug.Log("Reached this point too.");
+        moveSpeed += boostAmount;
+        yield return new WaitForSeconds(boostDuration);
+        moveSpeed -= boostAmount;
     }
 }

@@ -45,7 +45,13 @@ public class CarCollisionHandler : MonoBehaviour
                 deliverySystem.ActivateDeliveryZone();
                 break;
             case "Boost":
-                //do something
+                Boost boost = collision.GetComponent<Boost>();
+                if (!boost.IsOnCooldown())
+                {
+                    Debug.Log("Reached this point");
+                    StartCoroutine(car.Boost(boost.SpeedBoost()));
+                    StartCoroutine(boost.BoostCooldown());
+                }
                 break;
             case "Delivery Zone":
                 deliverySystem.DeactivateDeliveryZone();
