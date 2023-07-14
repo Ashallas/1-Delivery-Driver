@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 300
   moveSpeed: 10
+  boostDuration: 0
   maxHealth: 0
   currentHealth: 0
 --- !u!50 &-5286334083475199082
@@ -201,3 +202,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54bd55cf4a27b74faea078f83607461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deliveryZones: []
+  deliveryParticles: {fileID: 4368218344999852618, guid: a62843ff7854fc248a2de19c744cce68, type: 3}

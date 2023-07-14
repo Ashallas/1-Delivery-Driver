@@ -10,6 +10,7 @@ public class DeliverySystem : MonoBehaviour
     GameObject activatedDeliveryZone = null;
 
     [SerializeField] List<GameObject> deliveryZones = new List<GameObject>();
+    [SerializeField] ParticleSystem deliveryParticles;
 
     public bool GetHasPackage()
     {
@@ -52,5 +53,11 @@ public class DeliverySystem : MonoBehaviour
         }
 
         activatedDeliveryZone.SetActive(false);
+    }
+
+    public void PlayDeliveryParticles()
+    {
+        var particles = Instantiate(deliveryParticles, transform.position, transform.rotation);
+        Destroy(particles, 1f);
     }
 }

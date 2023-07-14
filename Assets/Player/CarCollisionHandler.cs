@@ -57,6 +57,7 @@ public class CarCollisionHandler : MonoBehaviour
                 deliverySystem.DeactivateDeliveryZone();
                 deliverySystem.SetHasPackage(false);
                 deliverySystem.IncreaseSuccessfulDeliveries(1);
+                deliverySystem.PlayDeliveryParticles();
                 Debug.Log("You did it!");
                 break;
             default:
