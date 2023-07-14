@@ -22,6 +22,8 @@ public class Car : MonoBehaviour
 
         transform.Rotate(0f, 0f, -steer); //Negative steer so we rotate in the right direction
         transform.Translate(0f, acceleration, 0f);
+
+        //consider checking if car is on road and applying a movement penalty if it isn't
     }
 
     public void TakeDamage(float damage)

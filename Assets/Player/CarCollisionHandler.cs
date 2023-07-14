@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class CarCollisionHandler : MonoBehaviour
 {
-
     Car car;
     DeliverySystem deliverySystem;
 
     void Awake()
     {
         car = GetComponent<Car>();    
-        deliverySystem = GetComponent<DeliverySystem>();   
+        deliverySystem = GetComponent<DeliverySystem>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -42,10 +41,17 @@ public class CarCollisionHandler : MonoBehaviour
                 Debug.Log("Package Acquired!");
                 package.DisplayInstructions();
                 package.SelfDestruct();
-                deliverySystem.GainPackage();
+                deliverySystem.SetHasPackage(true);
+                deliverySystem.ActivateDeliveryZone();
                 break;
             case "Boost":
                 //do something
+                break;
+            case "Delivery Zone":
+                deliverySystem.DeactivateDeliveryZone();
+                deliverySystem.SetHasPackage(false);
+                deliverySystem.IncreaseSuccessfulDeliveries(1);
+                Debug.Log("You did it!");
                 break;
             default:
                 break;
