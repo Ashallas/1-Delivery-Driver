@@ -46,6 +46,7 @@ public class CarCollisionHandler : MonoBehaviour
                 break;
             case "Boost":
                 Boost boost = collision.GetComponent<Boost>();
+
                 if (!boost.IsOnCooldown())
                 {
                     Debug.Log("Reached this point");
@@ -61,6 +62,7 @@ public class CarCollisionHandler : MonoBehaviour
                 Debug.Log("You did it!");
                 break;
             default:
+                Debug.LogError("Unknown Pickup type! What the heck?!");
                 break;
         }
     }
