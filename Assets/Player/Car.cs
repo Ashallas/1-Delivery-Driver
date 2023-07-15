@@ -10,6 +10,15 @@ public class Car : MonoBehaviour
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
 
+    SpriteRenderer spriteRenderer;
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        SetSprite();
+    }
+
     void Update()
     {
         Drive();
@@ -38,5 +47,10 @@ public class Car : MonoBehaviour
         moveSpeed += boostAmount;
         yield return new WaitForSeconds(boostDuration);
         moveSpeed -= boostAmount;
+    }
+
+    public void SetSprite()
+    {
+        spriteRenderer.sprite = GameManager.Instance.carSprite;
     }
 }

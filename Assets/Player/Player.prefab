@@ -106,6 +106,7 @@ MonoBehaviour:
   boostDuration: 0
   maxHealth: 0
   currentHealth: 0
+  defaultSprite: {fileID: 21300000, guid: 63d4d9b4edd0ef54a920b02025435fc7, type: 3}
 --- !u!50 &-5286334083475199082
 Rigidbody2D:
   serializedVersion: 4
