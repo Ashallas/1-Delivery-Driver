@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 88a502d62f6a4c34688e8f0e00067b8d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Bonus Coffee
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6074c5b88a59c7044bb8dfd8b514fa0b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
