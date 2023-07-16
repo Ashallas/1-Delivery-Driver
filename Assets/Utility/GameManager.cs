@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour
 
             carSprite = data.carSprite;
         }
-        else
+
+        if(carSprite == null) 
         {
             carSprite = defaultCarSprite;
         }
