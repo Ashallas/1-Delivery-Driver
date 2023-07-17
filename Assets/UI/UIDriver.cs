@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class UIDriver : MonoBehaviour
 {
-    int currentScore = 0; 
+    int currentScore = 0;
+
+    Car car;
 
     [SerializeField] Canvas gameCanvas;
     [SerializeField] Canvas gameOverCanvas;
@@ -13,6 +15,13 @@ public class UIDriver : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI finalScoreText;
     [SerializeField] TextMeshProUGUI winCanvasScoreText;
+    [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] TextMeshProUGUI healthText;
+
+    void Awake()
+    {
+        car = FindObjectOfType<Car>();    
+    }
 
     void Start()
     {
@@ -24,6 +33,8 @@ public class UIDriver : MonoBehaviour
     void Update()
     {
         UpdateScore();
+        UpdateTimer();
+        UpdateHealth();
     }
 
     void UpdateScore()
@@ -32,11 +43,21 @@ public class UIDriver : MonoBehaviour
         scoreText.text = "Score: " + currentScore;
     }
 
+    void UpdateTimer()
+    {
+        timerText.text = "Remaining Time: " + Mathf.RoundToInt(car.GetRemainingTime());
+    }
+
+    void UpdateHealth()
+    {
+        healthText.text = "Car Health: " + car.GetCurrentHealth();
+    }
+
     public void DisplayGameOverCanvas()
     {
         gameCanvas.gameObject.SetActive(false);
         gameOverCanvas.gameObject.SetActive(true);
-        finalScoreText.text = "Final Score: " + currentScore;
+        finalScoreText.text = "High Score: " + GameManager.Instance.GetHighScore();
     }
 
     public void DisplayWinCanvas()
@@ -47,4 +68,6 @@ public class UIDriver : MonoBehaviour
         winCanvasScoreText.text = "Score: " + currentScore;
 
     }
+
+
 } 

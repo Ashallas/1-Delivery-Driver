@@ -39,6 +39,20 @@ public class GameManager : MonoBehaviour
         return currentScore;
     }
 
+    public int GetHighScore()
+    {
+        return highScore;
+    }
+
+    public void SetHighScore(int score)
+    {
+        if(score < highScore)
+        {
+            return;
+        }
+        highScore = score;
+    }
+
     public void IncreaseCurrentScore(int increment)
     {
         currentScore += increment;
@@ -49,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         public Sprite carSprite;
         public int lastSceneIndex;
+        public int highScore;
     }
 
     public void SavePlayerData()
@@ -56,6 +71,7 @@ public class GameManager : MonoBehaviour
         SaveData data = new SaveData();
         data.carSprite = carSprite;
         data.lastSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        data.highScore = highScore;
 
         string json = JsonUtility.ToJson(data);
 
@@ -74,6 +90,7 @@ public class GameManager : MonoBehaviour
 
             carSprite = data.carSprite;
             lastSceneIndex = data.lastSceneIndex;
+            highScore = data.highScore; 
         }
 
         if(carSprite == null) 

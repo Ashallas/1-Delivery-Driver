@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
+    float levelTimer;
+
     [SerializeField] float turnSpeed;
     [SerializeField] float moveSpeed;
     [SerializeField] float roadSpeed;
@@ -12,10 +14,16 @@ public class Car : MonoBehaviour
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
     [SerializeField] float crashDamage;
-    [SerializeField] float levelTimer;
+    [SerializeField] float levelTime;
 
     SpriteRenderer spriteRenderer;
     UIDriver uiDriver;
+
+    void Awake()
+    {
+        levelTimer = levelTime;
+        currentHealth = maxHealth;
+    }
 
     void Start()
     {
@@ -23,12 +31,12 @@ public class Car : MonoBehaviour
         uiDriver = FindObjectOfType<UIDriver>();
 
         SetSprite();
-        currentHealth = maxHealth;
     }
 
     void Update()
     {
         Drive();
+        Timer();
     }
 
     void OnTriggerStay2D(Collider2D collision)
@@ -64,9 +72,22 @@ public class Car : MonoBehaviour
         transform.Translate(0f, acceleration, 0f);
     }
 
+    void Timer()
+    {
+        if(levelTimer > 0)
+        {
+            levelTimer -= Time.deltaTime;
+        }
+        else
+        {
+            EndGame();
+        }
+    }
+
     void EndGame()
     {
         uiDriver.DisplayGameOverCanvas();
+        GameManager.Instance.SetHighScore(GameManager.Instance.GetCurrentScore());
         Time.timeScale = 0;
     }
 
@@ -89,6 +110,21 @@ public class Car : MonoBehaviour
 
     public void SetSprite()
     {
+        if (GameManager.Instance.carSprite == null) 
+        { 
+            return; 
+        }
+
         spriteRenderer.sprite = GameManager.Instance.carSprite;
+    }
+
+    public float GetRemainingTime()
+    {
+        return levelTimer;
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

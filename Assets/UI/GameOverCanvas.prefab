@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3742162426029923499}
   - component: {fileID: 4584536784851228218}
   - component: {fileID: 4128970391797017625}
-  - component: {fileID: 1903794402658147167}
   m_Layer: 5
   m_Name: GameOverCanvas
   m_TagString: Untagged
@@ -38,7 +37,7 @@ RectTransform:
   - {fileID: 5736909605579494611}
   - {fileID: 8137740763822052114}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -108,18 +107,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1903794402658147167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445614074805488513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8c6aca88bc7c1744ae5544ec20cd769, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2776486903184513557
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +914,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreDisplayText
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2301099769320568120, guid: 1d8371cff1ab44147b1e927728996efc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

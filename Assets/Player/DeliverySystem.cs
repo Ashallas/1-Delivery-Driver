@@ -32,6 +32,7 @@ public class DeliverySystem : MonoBehaviour
     {
         Time.timeScale = 0f;
         uiDriver.DisplayWinCanvas();
+        GameManager.Instance.SetHighScore(GameManager.Instance.GetCurrentScore());
     }
 
     public bool GetHasPackage()

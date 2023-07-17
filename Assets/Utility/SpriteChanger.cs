@@ -6,6 +6,7 @@ public class SpriteChanger : MonoBehaviour
 {
     public void SpriteChange(Sprite car)
     {
-        GameManager.Instance.carSprite = car; 
+        GameManager.Instance.carSprite = car;
+        GameManager.Instance.SavePlayerData();
     }
 }
