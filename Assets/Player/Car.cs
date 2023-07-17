@@ -6,15 +6,19 @@ public class Car : MonoBehaviour
 {
     [SerializeField] float turnSpeed;
     [SerializeField] float moveSpeed;
+    [SerializeField] float roadSpeed;
+    [SerializeField] float offRoadSpeed;
     [SerializeField] float boostDuration;
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
 
     SpriteRenderer spriteRenderer;
+    BoxCollider2D boxCollider;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();    
 
         SetSprite();
     }
@@ -24,16 +28,37 @@ public class Car : MonoBehaviour
         Drive();
     }
 
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Road")
+        {
+            moveSpeed = roadSpeed;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Road")
+        {
+            moveSpeed = offRoadSpeed;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Road")
+        {
+            moveSpeed = roadSpeed;
+        }
+    }
+
     void Drive()
     {
-        //consider updating this to a more robust system using physics and forces to simulate actual acceleration and car physics (but it's just a silly 2D game so prob not)
         float steer = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
         float acceleration = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
         transform.Rotate(0f, 0f, -steer); //Negative steer so we rotate in the right direction
         transform.Translate(0f, acceleration, 0f);
-
-        //consider checking if car is on road and applying a movement penalty if it isn't
     }
 
     public void TakeDamage(float damage)
