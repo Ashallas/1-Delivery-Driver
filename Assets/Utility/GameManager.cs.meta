@@ -3,7 +3,13 @@ guid: 950f85d0371e4104587a73e0f0fcb8e5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - scoreText: {fileID: 2540214984896056547, guid: 07b56b06b562f4e479ec779b6bde7399, type: 3}
+  - finalScoreText: {fileID: 1528547683741029450, guid: 1d8371cff1ab44147b1e927728996efc, type: 3}
+  - gameOverCanvas: {fileID: 3742162426029923499, guid: c3db8c431ea0e564eb6d86e0b97cf136, type: 3}
+  - gameCanvas: {fileID: 5170924921783994454, guid: 142b4039c9e53c74f8a21d01e3ff8678, type: 3}
+  - carSprite: {instanceID: 0}
+  - defaultCarSprite: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

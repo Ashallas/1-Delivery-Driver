@@ -11,16 +11,18 @@ public class Car : MonoBehaviour
     [SerializeField] float boostDuration;
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
+    [SerializeField] float crashDamage;  
 
     SpriteRenderer spriteRenderer;
-    BoxCollider2D boxCollider;
+    UIDriver uiDriver;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider = GetComponent<BoxCollider2D>();    
+        uiDriver = FindObjectOfType<UIDriver>();
 
         SetSprite();
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -61,9 +63,14 @@ public class Car : MonoBehaviour
         transform.Translate(0f, acceleration, 0f);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage()
     {
-        currentHealth -= damage;
+        currentHealth -= crashDamage;
+        if(currentHealth <= 0f)
+        {
+            uiDriver.DisplayGameOverCanvas();
+            Time.timeScale = 0;
+        }
     }
 
     public IEnumerator Boost(float boostAmount)

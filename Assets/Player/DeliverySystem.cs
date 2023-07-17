@@ -5,7 +5,6 @@ using UnityEngine;
 public class DeliverySystem : MonoBehaviour
 {
     bool hasPackage = false;
-    int successfulDeliveries = 0;
 
     GameObject activatedDeliveryZone = null;
 
@@ -21,17 +20,6 @@ public class DeliverySystem : MonoBehaviour
     {
         hasPackage = packageAcquired;
     }
-
-    public int GetSuccessfulDeliveries()
-    {
-        return successfulDeliveries;
-    }
-
-    public void IncreaseSuccessfulDeliveries(int increment)
-    {
-        successfulDeliveries += increment;
-    }
-
 
     public void ActivateDeliveryZone()
     {

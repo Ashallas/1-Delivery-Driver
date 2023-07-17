@@ -19,8 +19,7 @@ public class CarCollisionHandler : MonoBehaviour
         {
             return;
         }
-        //TakeDamage logic can probably just be static damage based on obstacle for our purposes
-        Debug.Log("car took some damage");
+        car.TakeDamage();
         
     }
 
@@ -57,9 +56,8 @@ public class CarCollisionHandler : MonoBehaviour
             case "Delivery Zone":
                 deliverySystem.DeactivateDeliveryZone();
                 deliverySystem.SetHasPackage(false);
-                deliverySystem.IncreaseSuccessfulDeliveries(1);
+                GameManager.Instance.IncreaseCurrentScore(50);
                 deliverySystem.PlayDeliveryParticles();
-                Debug.Log("You did it!");
                 break;
             default:
                 Debug.LogError("Unknown Pickup type! What the heck?!");
