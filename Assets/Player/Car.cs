@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    float levelTimer;
+    float levelTimer; 
 
     [SerializeField] float turnSpeed;
     [SerializeField] float moveSpeed;
@@ -35,7 +35,7 @@ public class Car : MonoBehaviour
 
     void Update()
     {
-        Drive();
+        Drive(); //ABSTRACTION
         Timer();
     }
 
@@ -118,7 +118,7 @@ public class Car : MonoBehaviour
         spriteRenderer.sprite = GameManager.Instance.carSprite;
     }
 
-    public float GetRemainingTime()
+    public float GetRemainingTime() //ENCAPSULATION
     {
         return levelTimer;
     }

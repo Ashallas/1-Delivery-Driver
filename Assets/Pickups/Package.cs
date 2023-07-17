@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Package : Pickup
+public class Package : Pickup //INHERITANCE
 {
     [SerializeField]string instructions;
 
     void Start()
     {
-        Type = "Package";
+        Type = "Package"; //POLYMORPHISM
     }
 
     public void DisplayInstructions()
