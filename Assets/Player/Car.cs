@@ -11,7 +11,8 @@ public class Car : MonoBehaviour
     [SerializeField] float boostDuration;
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
-    [SerializeField] float crashDamage;  
+    [SerializeField] float crashDamage;
+    [SerializeField] float levelTimer;
 
     SpriteRenderer spriteRenderer;
     UIDriver uiDriver;
@@ -63,13 +64,18 @@ public class Car : MonoBehaviour
         transform.Translate(0f, acceleration, 0f);
     }
 
+    void EndGame()
+    {
+        uiDriver.DisplayGameOverCanvas();
+        Time.timeScale = 0;
+    }
+
     public void TakeDamage()
     {
         currentHealth -= crashDamage;
         if(currentHealth <= 0f)
         {
-            uiDriver.DisplayGameOverCanvas();
-            Time.timeScale = 0;
+            EndGame();
         }
     }
 

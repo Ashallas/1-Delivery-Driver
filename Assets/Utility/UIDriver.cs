@@ -9,8 +9,17 @@ public class UIDriver : MonoBehaviour
 
     [SerializeField] Canvas gameCanvas;
     [SerializeField] Canvas gameOverCanvas;
+    [SerializeField] Canvas winCanvas;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI finalScoreText;
+    [SerializeField] TextMeshProUGUI winCanvasScoreText;
+
+    void Start()
+    {
+        gameCanvas.gameObject.SetActive(true);
+        gameOverCanvas.gameObject.SetActive(false);
+        winCanvas.gameObject.SetActive(false);
+    }
 
     void Update()
     {
@@ -28,5 +37,14 @@ public class UIDriver : MonoBehaviour
         gameCanvas.gameObject.SetActive(false);
         gameOverCanvas.gameObject.SetActive(true);
         finalScoreText.text = "Final Score: " + currentScore;
+    }
+
+    public void DisplayWinCanvas()
+    {
+        gameCanvas.gameObject.SetActive(false);
+        gameOverCanvas.gameObject.SetActive(false);
+        winCanvas.gameObject.SetActive(true);
+        winCanvasScoreText.text = "Score: " + currentScore;
+
     }
 } 

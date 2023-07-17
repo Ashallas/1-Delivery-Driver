@@ -5,11 +5,34 @@ using UnityEngine;
 public class DeliverySystem : MonoBehaviour
 {
     bool hasPackage = false;
+    int deliveriesMade = 0;
+
+    [SerializeField] int deliveriesToMake;
 
     GameObject activatedDeliveryZone = null;
+    UIDriver uiDriver;
 
     [SerializeField] List<GameObject> deliveryZones = new List<GameObject>();
     [SerializeField] ParticleSystem deliveryParticles;
+    [SerializeField] GameObject packageSpawn;
+    [SerializeField] GameObject package;
+
+    void Start()
+    {
+        uiDriver = FindObjectOfType<UIDriver>();
+        SpawnPackage();    
+    }
+
+    void SpawnPackage()
+    {
+        Instantiate(package, packageSpawn.transform.position, transform.rotation);
+    }
+
+    void DeliveryWin()
+    {
+        Time.timeScale = 0f;
+        uiDriver.DisplayWinCanvas();
+    }
 
     public bool GetHasPackage()
     {
@@ -19,6 +42,11 @@ public class DeliverySystem : MonoBehaviour
     public void SetHasPackage(bool packageAcquired)
     {
         hasPackage = packageAcquired;
+    }
+
+    public int GetDeliveriesMade()
+    {
+        return deliveriesMade;
     }
 
     public void ActivateDeliveryZone()
@@ -41,6 +69,12 @@ public class DeliverySystem : MonoBehaviour
         }
 
         activatedDeliveryZone.SetActive(false);
+        deliveriesMade++;
+        if(deliveriesMade >= deliveriesToMake)
+        {
+            DeliveryWin();
+        }
+        SpawnPackage();
     }
 
     public void PlayDeliveryParticles()

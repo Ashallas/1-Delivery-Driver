@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+
 
 public class GameManager : MonoBehaviour
 {
@@ -44,53 +42,6 @@ public class GameManager : MonoBehaviour
     public void IncreaseCurrentScore(int increment)
     {
         currentScore += increment;
-    }
-
-    //This is the method the play button calls at the moment
-    public void LoadNextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Time.timeScale = 1;
-    }
-
-    public void LoadScene(int buildIndex)
-    {
-        SceneManager.LoadScene(buildIndex);
-        Time.timeScale = 1;
-    }
-
-    //This is the method the play button will call in future
-    public void LoadLastScene(int lastSceneIndex)
-    {
-        if(lastSceneIndex == 0)
-        {
-            lastSceneIndex = 1;
-        }
-
-        SceneManager.LoadScene(lastSceneIndex);
-        Time.timeScale = 1;
-    }
-
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1;
-    }
-
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
-    }
-
-    public void QuitGame()
-    {
-        SavePlayerData();
-#if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
-#else
-        Application.Quit(); 
-#endif
     }
 
     [System.Serializable]
